@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Hub</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Commerce Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<!-- Navbar -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="container">
       <div class="logo">E-Commerce Hub</div>
@@ -16,7 +16,7 @@
         <ul class="nav-links">
           <li><a href="/HTML/index.html"><i class="fas fa-house"></i> Home</a></li>
           <li><a href="/HTML/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
-          <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li><a href="/HTML/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
       </nav>
       <div class="nav-icons">
@@ -28,5 +28,132 @@
       </div>
     </div>
   </header>
+
+  <!-- Hero -->
+  <section class="hero-text">
+    <h3>Get In Touch</h3>
+    <p>Have Questions? We're here to help. Reach out to the customer support team.</p>
+  </section>
+
+  <!-- Contact Info Cards -->
+  <section class="contact">
+    <div class="call-card">
+      <i class="fa fa-phone"></i>
+      <h3>Call Us</h3>
+      <p>Mon-Fri 9am-6pm</p>
+      <p><strong>+91 98991-9999</strong></p>
+    </div>
+
+    <div class="email-card">
+      <i class="fa fa-envelope"></i>
+      <h3>Email Us</h3>
+      <p>We respond within 24hrs</p>
+      <p><strong>support@commercehub.com</strong></p>
+    </div>
+
+    <div class="visit-card">
+      <i class="fa fa-location-dot"></i>
+      <h3>Visit Us</h3>
+      <p>Our Headquarters</p>
+      <p><strong>Lorem ipsum dolor sit amet.</strong></p>
+    </div>
+
+    <div class="hr-card">
+      <i class="fa fa-clock"></i>
+      <h3>Hours</h3>
+      <p>Customer Support</p>
+      <p><strong>Mon-Fri: 9:00 AM - 6:00 PM</strong></p>
+      <p><strong>Sat-Sun: 10:00 AM - 4:00 PM</strong></p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="msg-card">
+    <i class="fa fa-message"></i>
+    <h3>Send Us A Message</h3>
+    <form action="#" method="POST">
+      <div>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div>
+        <label for="subject">Subject</label><br>
+        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+      </div>
+
+      <div>
+        <label for="message">Message</label><br>
+        <textarea id="message" name="message" placeholder="Tell us more about your inquiry..." rows="5" required></textarea>
+      </div>
+
+      <button type="submit"><i class="fa-brands fa-telegram-plane"></i> Send Message</button>
+    </form>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Stay Updated with Our Latest Offers</h2>
+    <p>Subscribe to our newsletter and never miss a deal</p>
+    <form action="#" method="POST">
+      <input type="email" placeholder="Enter your email" name="email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>E-Commerce Hub</h3>
+        <p>Your trusted partner for premium products and exceptional shopping experience.</p>
+      </div>
+      <div class="socials">
+        <ul class="nav-links">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-columns">
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#">Home</a></p>
+        <p><a href="#">Shop</a></p>
+        <p><a href="#">About Us</a></p>
+        <p><a href="#">Contact</a></p>
+        <p><a href="#">FAQ</a></p>
+      </div>
+      <div>
+        <h4>Customer Service</h4>
+        <p><a href="#">My Account</a></p>
+        <p><a href="#">Order Tracking</a></p>
+        <p><a href="#">Shipping Info</a></p>
+        <p><a href="#">Returns</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <p><a href="#">Location</a></p>
+        <p><a href="#">Phone Number</a></p>
+        <p><a href="#">Email</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Built with ❤️ by UCSI Interns</p>
+      <p>&copy; 2025 E-Commerce Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
+
