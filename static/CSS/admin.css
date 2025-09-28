@@ -1,0 +1,93 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: #f5f7fb; color: #333; padding: 20px; }
+
+/* Headings */
+h1 { text-align: center; margin-bottom: 20px; color: #222; }
+h2 { margin-bottom: 15px; color: #444; }
+
+/* Login */
+.login-card {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+.login-card form label { font-weight: 600; display: block; margin: 10px 0 5px; }
+.login-card input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 15px; }
+.login-card button { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.login-card button:hover { background: #3730a3; }
+.error { display: none; text-align: center; margin-top: 10px; }
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+  justify-content: center;
+}
+.card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.card h3 { margin-bottom: 10px; font-size: 18px; color: #666; }
+.card p { font-size: 22px; font-weight: bold; color: #111; }
+
+/* Add Product */
+.add-product {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.add-product form label { display: block; font-weight: 600; margin: 10px 0 5px; }
+.add-product form input, .add-product form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.add-product form button {
+  padding: 12px 20px;
+  background: #10b981;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.add-product form button:hover { background: #059669; }
+
+/* Inventory */
+.inventory {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.inventory table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+.inventory th, .inventory td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.inventory th { background: #f9fafb; font-weight: 600; }
+.inventory tr:hover { background: #f3f4f6; }
+.inventory button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.inventory .delete { background: #ef4444; color: white; }
+.inventory .delete:hover { background: #b91c1c; }
+.inventory button:not(.delete) { background: #3b82f6; color: white; }
+.inventory button:not(.delete):hover { background: #1d4ed8; }

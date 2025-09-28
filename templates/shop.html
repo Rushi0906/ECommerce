@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Commerce Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/CSS/shop.css">
 </head>
 <body>
 
@@ -15,58 +15,60 @@
     <div class="logo">E-Commerce Hub</div>
     <nav>
       <ul class="nav-links">
-        <li><a href="/HTML/index.html"><i class="fas fa-house"></i> Home</a></li>
-        <li><a href="/HTML/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
-        <li><a href="/HTML/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="/templates/index.html"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="/templates/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
+        <li><a href="/templates/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
     <div class="nav-icons">
-      <i class="fa fa-heart" aria-label="Wishlist"></i>
-      <i class="fa fa-shopping-cart" aria-label="Cart"></i>
-      <i class="fa fa-user" aria-label="Account"></i>
-      <button class="btn login">Login</button>
-      <button class="btn sell">Sell With Us</button>
+      <a href="#"><i class="fa fa-heart"></i></a>
+      <a href="/templates/shop.html"><i class="fa fa-shopping-cart"></i></a>
+      <a href="/templates/seller.html"><i class="fa fa-user"></i></a>
+      <button class="btn signup" onclick="location.href='/templates/signup.html'">SignUp</button>
+      <button class="btn login" onclick="location.href='/templates/sign.html'">Login</button>
+      <button class="btn sell" onclick="location.href='/templates/admin.html'">Admin Login</button>
+      <button class="btn sell" onclick="location.href='/templates/seller.html'">Sell With Us</button>
     </div>
   </div>
 </header>
+
 
 <!-- Shop Section -->
 <main class="shop-section">
   <div class="shop-container">
 
-    <!-- Sidebar filters -->
-    <aside class="filters">
-      <i class="fa fa-filter"></i>
-      <h3>Filters</h3>
+<!-- Sidebar filters -->
+<aside class="filters">
+  <i class="fa fa-filter"></i>
+  <h3>Filters</h3>
 
-      <div class="filter-group">
-        <h4>Categories</h4>
-        <ul>
-          <li><a href="#" class="active">All</a></li>
-          <li><a href="#">Electronics</a></li>
-          <li><a href="#">Audio</a></li>
-          <li><a href="#">Computers</a></li>
-          <li><a href="#">Wearables</a></li>
-          <li><a href="#">Photography</a></li>
-          <li><a href="#">Accessories</a></li>
-        </ul>
-      </div>
+  <!-- Categories -->
+  <div class="filter-group">
+    <h4>Categories</h4>
+    <label><input type="checkbox" name="category" value="all" checked> All</label><br>
+    <label><input type="checkbox" name="category" value="electronics"> Electronics</label><br>
+    <label><input type="checkbox" name="category" value="audio"> Audio</label><br>
+    <label><input type="checkbox" name="category" value="computers"> Computers</label><br>
+    <label><input type="checkbox" name="category" value="wearables"> Wearables</label><br>
+    <label><input type="checkbox" name="category" value="photography"> Photography</label><br>
+    <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+  </div>
 
-      <div class="filter-group">
-        <h4>Price Range</h4>
-        <ul>
-          <li><a href="#">Under $100</a></li>
-          <li><a href="#">$100 - $300</a></li>
-          <li><a href="#">$300 - $500</a></li>
-          <li><a href="#">$500 - $1000</a></li>
-          <li><a href="#">Over $1000</a></li>
-        </ul>
-      </div>
+  <!-- Price Range -->
+  <div class="filter-group">
+    <h4>Price Range</h4>
+    <label><input type="checkbox" name="price" value="under-100"> Under $100</label><br>
+    <label><input type="checkbox" name="price" value="100-300"> $100 - $300</label><br>
+    <label><input type="checkbox" name="price" value="300-500"> $300 - $500</label><br>
+    <label><input type="checkbox" name="price" value="500-1000"> $500 - $1000</label><br>
+    <label><input type="checkbox" name="price" value="over-1000"> Over $1000</label>
+  </div>
 
-      <div class="clear-filters">
-        <button class="btn-clear">Clear All Filters</button>
-      </div>
-    </aside>
+  <div class="clear-filters">
+    <button class="btn-clear">Clear All Filters</button>
+  </div>
+</aside>
+
 
     <!-- Product Grid -->
     <section class="products-grid">
@@ -92,7 +94,7 @@
         <div class="product-card">
           <span class="badge new">New</span>
           <span class="badge discount">-25%</span>
-          <img src="/Assests/headphone.jpeg" alt="Premium Wireless Headphones" />
+          <img src="/static/Assests/headphone.jpeg" alt="Premium Wireless Headphones" />
           <p class="category">Audio</p>
           <h4>Premium Wireless Headphones</h4>
           <div class="rating">⭐⭐⭐⭐☆ (24)</div>
@@ -100,7 +102,7 @@
         </div>
 
         <div class="product-card">
-          <img src="/Assests/watch.jpeg" alt="Smart Fitness Watch" />
+          <img src="/static/Assests/watch.jpeg" alt="Smart Fitness Watch" />
           <p class="category">Wearables</p>
           <h4>Smart Fitness Watch</h4>
           <div class="rating">⭐⭐⭐⭐ (89)</div>
@@ -108,7 +110,7 @@
         </div>
 
         <div class="product-card">
-          <img src="/Assests/camera.jpeg" alt="DSLR Camera" />
+          <img src="/static/Assests/camera.jpeg" alt="DSLR Camera" />
           <p class="category">Photography</p>
           <h4>HD DSLR Camera</h4>
           <div class="rating">⭐⭐⭐⭐ (89)</div>
@@ -116,7 +118,7 @@
         </div>
 
         <div class="product-card">
-          <img src="/Assests/laptop.jpeg" alt="Gaming Laptop" />
+          <img src="/static/Assests/laptop.jpeg" alt="Gaming Laptop" />
           <p class="category">Computers</p>
           <h4>High-Performance Gaming Laptop</h4>
           <div class="rating">⭐⭐⭐⭐(89)</div>
@@ -124,7 +126,7 @@
         </div>
 
         <div class="product-card">
-          <img src="/Assests/mouse.jpeg" alt="Wireless Gaming Mouse" />
+          <img src="/static/Assests/mouse.jpeg" alt="Wireless Gaming Mouse" />
           <p class="category">Accessories</p>
           <h4>Wireless Gaming Mouse</h4>
           <div class="rating">⭐⭐⭐⭐(89)</div>
@@ -132,7 +134,7 @@
         </div>
 
         <div class="product-card">
-          <img src="/Assests/smart phone.jpeg" alt="Flagship Smartphone" />
+          <img src="/static/Assests/smart phone.jpeg" alt="Flagship Smartphone" />
           <p class="category">Electronics</p>
           <h4>Flagship Smartphone</h4>
           <div class="rating">⭐⭐⭐⭐(89)</div>

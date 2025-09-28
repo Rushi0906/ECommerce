@@ -5,29 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Commerce Hub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/CSS/contact.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">E-Commerce Hub</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/HTML/index.html"><i class="fas fa-house"></i> Home</a></li>
-          <li><a href="/HTML/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
-          <li><a href="/HTML/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <i class="fa fa-heart"></i>
-        <i class="fa fa-shopping-cart"></i>
-        <i class="fa fa-user"></i>
-        <button class="btn login">Login</button>
-        <button class="btn sell">Sell With Us</button>
-      </div>
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">E-Commerce Hub</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/templates/index.html"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="/templates/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
+        <li><a href="/templates/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-icons">
+      <a href="#"><i class="fa fa-heart"></i></a>
+      <a href="/templates/shop.html"><i class="fa fa-shopping-cart"></i></a>
+      <a href="/templates/seller.html"><i class="fa fa-user"></i></a>
+      <button class="btn signup" onclick="location.href='/templates/signup.html'">SignUp</button>
+      <button class="btn login" onclick="location.href='/templates/sign.html'">Login</button>
+      <button class="btn sell" onclick="location.href='/templates/admin.html'">Admin Login</button>
+      <button class="btn sell" onclick="location.href='/templates/seller.html'">Sell With Us</button>
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="hero-text">

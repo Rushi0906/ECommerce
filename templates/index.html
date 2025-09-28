@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Commerce Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CSS/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">E-Commerce Hub</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/HTML/index.html"><i class="fas fa-house"></i> Home</a></li>
-          <li><a href="/HTML/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
-          <li><a href="/HTML/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-      </nav>
-      <div class="nav-icons">
-        <i class="fa fa-heart"></i>
-        <i class="fa fa-shopping-cart"></i>
-        <i class="fa fa-user"></i>
-        <button class="btn signup" onclick="location.href='/HTML/signup.html'">SignUp</button>
-        <button class="btn login" onclick="location.href='/HTML/sign.html'">Login</button>
-          <button class="btn sell" onclick="location.href='/HTML/admin.html'">Admin Login</button>
-        <button class="btn sell" onclick="location.href='/HTML/seller.html'">Sell With Us</button>
-      </div>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="{{ url_for('shop') }}"><i class="fas fa-shop"></i> Shop</a></li>
+      <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="buttons">
+      <a href="{{ url_for('signup') }}"><button>SignUp</button></a>
+      <a href="{{ url_for('sign') }}"><button>Login</button></a>
+      <a href="{{ url_for('admin') }}"><button>Admin Login</button></a>
+      <a href="{{ url_for('seller') }}"><button>Sell With Us</button></a>
     </div>
-  </header>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
 
 
-  <!-- Hero Section -->
+
+    <!-- Hero Section -->
   <section class="hero">
     <h1>Discover Amazing <span class="gradient-text">Products Today</span></h1>
     <p>Shop from thousands of premium products with fast delivery, secure payments, and exceptional customer service. Your perfect purchase is just a click away.</p>
     <div class="cta-buttons">
-      <button class="btn btn-primary"onclick="location.href='/HTML/shop.html'">Start Shopping →</button>
-      <button class="btn btn-dark" onclick="location.href='/HTML/seller.html'">Become a Seller</button>
+      <button class="btn btn-primary"onclick="location.href='/templates/shop.html'">Start Shopping →</button>
+      <button class="btn btn-dark" onclick="location.href='/templates/seller.html'">Become a Seller</button>
     </div>
     <div class="stats">
       <div><strong>50K+</strong><span>Happy Customers</span></div>
@@ -50,17 +43,58 @@
   </section>
 
   <!-- Categories -->
-  <section class="features">
+  <section class="category-section">
     <h2>Shop by Category</h2>
     <p>Explore our diverse range of products across all major categories</p>
-    <div class="feature-grid">
-      <div class="card"><i class="fa fa-mobile-phone"></i><h3>Electronics</h3><p>1,200+ items</p></div>
-      <div class="card"><i class="fa fa-laptop"></i><h3>Computers</h3><p>800+ items</p></div>
-      <div class="card"><i class="fa fa-headphones"></i><h3>Audio</h3><p>650+ items</p></div>
-      <div class="card"><i class="fas fa-clock"></i><h3>Wearables</h3><p>400+ items</p></div>
-      <div class="card"><i class="fa fa-camera"></i><h3>Cameras</h3><p>300+ items</p></div>
-      <div class="card"><i class="fa fa-shirt"></i><h3>Fashion</h3><p>2,100+ items</p></div>
-      <div class="card"><i class="fa fa-house"></i><h3>Home & Garden</h3><p>750+ items</p></div>
+    
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="icon electronics"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3>Electronics</h3>
+        <p>1,200+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon computers"><i class="fa-solid fa-laptop"></i></div>
+        <h3>Computers</h3>
+        <p>800+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon audio"><i class="fa-solid fa-headphones"></i></div>
+        <h3>Audio</h3>
+        <p>650+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon wearables"><i class="fa fa-watch-smart"></i></div>
+        <h3>Wearables</h3>
+        <p>400+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon cameras"><i class="fa-solid fa-camera"></i></div>
+        <h3>Cameras</h3>
+        <p>300+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon gaming"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Gaming</h3>
+        <p>900+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon fashion"><i class="fa-solid fa-shirt"></i></div>
+        <h3>Fashion</h3>
+        <p>2,100+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon home"><i class="fa-solid fa-house-chimney"></i></div>
+        <h3>Home & Garden</h3>
+        <p>750+ items</p>
+      </div>
     </div>
   </section>
 
@@ -71,7 +105,7 @@
     <div class="products-grid">
       <div class="product-card">
         <span>New</span><span>-25%</span>
-        <img src="/Assests/headphone.jpeg" alt="Premium Wireless Headphone" />
+        <img src="/static/Assests/headphone.jpeg" alt="Premium Wireless Headphone" />
         <p>AUDIO</p>
         <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (124)</p>
         <p>$299 <del>$399</del></p>
@@ -79,7 +113,7 @@
 
       <div class="product-card">
         <span>New</span>
-        <img src="/Assests/watch.jpeg" alt="Smart Fitness Watch" />
+        <img src="/static/Assests/watch.jpeg" alt="Smart Fitness Watch" />
         <p>WEARABLES</p>
         <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (89)</p>
         <p>$199</p>
@@ -87,7 +121,7 @@
 
       <div class="product-card">
         <span>New</span><span>-18%</span>
-        <img src="/Assests/camera.jpeg" alt="Professional Camera" />
+        <img src="/static/Assests/camera.jpeg" alt="Professional Camera" />
         <p>PHOTOGRAPHY</p>
         <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (67)</p>
         <p>$899 <del>$1099</del></p>
@@ -95,7 +129,7 @@
 
       <div class="product-card">
         <span>New</span>
-        <img src="/Assests/laptop.jpeg" alt="Gaming Laptop" />
+        <img src="/static/Assests/laptop.jpeg" alt="Gaming Laptop" />
         <p>COMPUTERS</p>
         <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (156)</p>
         <p>$1269</p>
@@ -135,7 +169,7 @@
   <section class="join">
     <h2>Ready to Start Selling?</h2>
     <p>Join thousands of sellers already growing their business with E-Commerce Hub. Start your journey today and reach millions of customers.</p>
-    <button class="btn btn-primary"onclick="location.href='/HTML/seller.html'">Become A Seller</button>
+    <button class="btn btn-primary"onclick="location.href='/templates/seller.html'">Become A Seller</button>
     <button class="btn btn-dark">Learn More</button>
   </section>
 
@@ -169,10 +203,10 @@
     <div class="footer-columns">
       <div>
         <h4>Quick Links</h4>
-        <p><a href="/HTML/index.html">Home</a></p>
-        <p><a href="/HTML/shop.html">Shop</a></p>
+        <p><a href="/templates/index.html">Home</a></p>
+        <p><a href="/templates/">Shop</a></p>
         <p><a href="#">About Us</a></p>
-        <p><a href="#">Contact</a></p>
+        <p><a href="/templates/contact.html">Contact</a></p>
         <p><a href="#">FAQ</a></p>
       </div>
       <div>
@@ -186,8 +220,8 @@
       <div>
         <h4>Contact Info</h4>
         <p><a href="#">Location</a></p>
-        <p><a href="/HTML/contact.html">Phone Number</a></p>
-        <p><a href="/HTML/contact.html">Email</a></p>
+        <p><a href="/templates/">Phone Number</a></p>
+        <p><a href="/templates/">Email</a></p>
       </div>
     </div>
 
@@ -196,6 +230,6 @@
       <p>&copy; 2025 E-Commerce Hub. All rights reserved.</p>
     </div>
   </footer>
-
+  </main>
 </body>
 </html>

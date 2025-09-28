@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}E-Commerce Hub{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="{{ url_for('shop') }}"><i class="fas fa-shop"></i> Shop</a></li>
+      <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="buttons">
+      <a href="{{ url_for('signup') }}"><button>SignUp</button></a>
+      <a href="{{ url_for('sign') }}"><button>Login</button></a>
+      <a href="{{ url_for('admin') }}"><button>Admin Login</button></a>
+      <a href="{{ url_for('seller') }}"><button>Sell With Us</button></a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    {% block content %}
+        <!-- Hero Section -->
+  <section class="hero">
+    <h1>Discover Amazing <span class="gradient-text">Products Today</span></h1>
+    <p>Shop from thousands of premium products with fast delivery, secure payments, and exceptional customer service. Your perfect purchase is just a click away.</p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary" onclick="location.href='/templates/shop.html';">Start Shopping →</button>
+      <button class="btn btn-dark" onclick="location.href='/templates/seller.html';">Become a Seller</button>
+    </div>
+    <div class="stats">
+      <div><strong>50K+</strong><span>Happy Customers</span></div>
+      <div><strong>10K+</strong><span>Products</span></div>
+      <div><strong>99%</strong><span>Satisfaction Rate</span></div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="category-section">
+    <h2>Shop by Category</h2>
+    <p>Explore our diverse range of products across all major categories</p>
+    
+    <div class="category-grid">
+      <div class="category-card">
+        <div class="icon electronics"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3>Electronics</h3>
+        <p>1,200+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon computers"><i class="fa-solid fa-laptop"></i></div>
+        <h3>Computers</h3>
+        <p>800+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon audio"><i class="fa-solid fa-headphones"></i></div>
+        <h3>Audio</h3>
+        <p>650+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon wearables"><i class="fa fa-watch-smart"></i></div>
+        <h3>Wearables</h3>
+        <p>400+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon cameras"><i class="fa-solid fa-camera"></i></div>
+        <h3>Cameras</h3>
+        <p>300+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon gaming"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Gaming</h3>
+        <p>900+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon fashion"><i class="fa-solid fa-shirt"></i></div>
+        <h3>Fashion</h3>
+        <p>2,100+ items</p>
+      </div>
+      
+      <div class="category-card">
+        <div class="icon home"><i class="fa-solid fa-house-chimney"></i></div>
+        <h3>Home & Garden</h3>
+        <p>750+ items</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <h2>Featured Products</h2>
+    <p>Discover our hand-picked selection of premium products</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <span>New</span><span>-25%</span>
+        <img src="/static/Assests/headphone.jpeg" alt="Premium Wireless Headphone" />
+        <p>AUDIO</p>
+        <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (124)</p>
+        <p>$299 <del>$399</del></p>
+      </div>
+
+      <div class="product-card">
+        <span>New</span>
+        <img src="/static/Assests/watch.jpeg" alt="Smart Fitness Watch" />
+        <p>WEARABLES</p>
+        <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (89)</p>
+        <p>$199</p>
+      </div>
+
+      <div class="product-card">
+        <span>New</span><span>-18%</span>
+        <img src="/static/Assests/camera.jpeg" alt="Professional Camera" />
+        <p>PHOTOGRAPHY</p>
+        <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (67)</p>
+        <p>$899 <del>$1099</del></p>
+      </div>
+
+      <div class="product-card">
+        <span>New</span>
+        <img src="/static/Assests/laptop.jpeg" alt="Gaming Laptop" />
+        <p>COMPUTERS</p>
+        <p>Rating: <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (156)</p>
+        <p>$1269</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Features -->
+  <section class="service-features">
+    <div>
+      <i class="fa fa-truck"></i>
+      <h3>Fast Shipping</h3>
+      <p>Free delivery on orders over $50. Get your products in 2–3 business days.</p>
+    </div>
+    <div>
+      <i class="fa fa-shield"></i>
+      <h3>Secure Payments</h3>
+      <p>Your payment information is secure with 256-bit SSL encryption.</p>
+    </div>
+    <div>
+      <i class="fa fa-user"></i>
+      <h3>24/7 Support</h3>
+      <p>Our customer support team is available 24/7 to help you.</p>
+    </div>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section class="reviews">
+    <h2>What Our Customers Say</h2>
+    <p>
+      <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+    </p>
+    <blockquote>"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, ut."</blockquote>
+  </section>
+
+  <!-- Seller Invitation -->
+  <section class="join">
+    <h2>Ready to Start Selling?</h2>
+    <p>Join thousands of sellers already growing their business with E-Commerce Hub. Start your journey today and reach millions of customers.</p>
+    <button class="btn btn-primary" onclick="location.href='/templates/seller.html';">Become A Seller</button>
+    <button class="btn btn-dark">Learn More</button>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Stay Updated with Our Latest Offers</h2>
+    <p>Subscribe to our newsletter and never miss a deal</p>
+    <form>
+      <input type="email" placeholder="Enter your email" name="email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+    {% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>E-Commerce Hub</h3>
+        <p>Your trusted partner for premium products and exceptional shopping experience.</p>
+      </div>
+      <div class="socials">
+        <ul class="nav-links">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-columns">
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="{{ url_for('home') }}">Home</a></p>
+        <p><a href="{{ url_for('shop') }}">Shop</a></p>
+        <p><a href="#">About Us</a></p>
+        <p><a href="{{ url_for('contact') }}">Contact</a></p>
+        <p><a href="#">FAQ</a></p>
+      </div>
+      <div>
+        <h4>Customer Service</h4>
+        <p><a href="#">My Account</a></p>
+        <p><a href="#">Order Tracking</a></p>
+        <p><a href="#">Shipping Info</a></p>
+        <p><a href="#">Returns</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
+      <div>
+        <h4>Contact Info</h4>
+        <p><a href="#">Location</a></p>
+        <p><a href="#">Phone Number</a></p>
+        <p><a href="#">Email</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Built with ❤️ by UCSI Interns</p>
+      <p>&copy; 2025 E-Commerce Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  {% block scripts %}
+  <!-- Optional page-specific scripts -->
+  {% endblock %}
+</body>
+</html>
