@@ -8,19 +8,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <nav>
-    <ul>
+<nav class="navbar">
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo">E-Commerce Hub</div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
       <li><a href="{{ url_for('home') }}"><i class="fas fa-house"></i> Home</a></li>
       <li><a href="{{ url_for('shop') }}"><i class="fas fa-shop"></i> Shop</a></li>
       <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
     </ul>
-    <div class="buttons">
-      <a href="{{ url_for('signup') }}"><button>SignUp</button></a>
-      <a href="{{ url_for('sign') }}"><button>Login</button></a>
-      <a href="{{ url_for('admin') }}"><button>Admin Login</button></a>
-      <a href="{{ url_for('seller') }}"><button>Sell With Us</button></a>
+
+    <!-- Buttons -->
+    <div class="nav-icons">
+      <a href="{{ url_for('sign') }}" class="btn login">Login</a>
+      <a href="{{ url_for('signup') }}" class="btn login">Sign Up</a>
+      <a href="{{ url_for('admin') }}" class="btn login">Admin</a>
+      <a href="{{ url_for('seller') }}" class="btn sell">Sell With Us</a>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <main>
     {% block content %}{% endblock %}
