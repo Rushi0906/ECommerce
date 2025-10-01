@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Commerce Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/static/CSS/shop.css">
+  <title>Shop - E-Commerce Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/shop.css') }}">
 </head>
 <body>
 
@@ -15,69 +15,64 @@
     <div class="logo">E-Commerce Hub</div>
     <nav>
       <ul class="nav-links">
-        <li><a href="/templates/index.html"><i class="fas fa-house"></i> Home</a></li>
-        <li><a href="/templates/shop.html"><i class="fas fa-shop"></i> Shop</a></li>
-        <li><a href="/templates/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="{{ url_for('home') }}"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="{{ url_for('shop') }}"><i class="fas fa-shop"></i> Shop</a></li>
+        <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact</a></li>
       </ul>
     </nav>
     <div class="nav-icons">
       <a href="#"><i class="fa fa-heart"></i></a>
-      <a href="/templates/shop.html"><i class="fa fa-shopping-cart"></i></a>
-      <a href="/templates/seller.html"><i class="fa fa-user"></i></a>
-      <button class="btn signup" onclick="location.href='/templates/signup.html'">SignUp</button>
-      <button class="btn login" onclick="location.href='/templates/sign.html'">Login</button>
-      <button class="btn sell" onclick="location.href='/templates/admin.html'">Admin Login</button>
-      <button class="btn sell" onclick="location.href='/templates/seller.html'">Sell With Us</button>
+      <a href="{{ url_for('shop') }}"><i class="fa fa-shopping-cart"></i></a>
+      <a href="{{ url_for('seller') }}"><i class="fa fa-user"></i></a>
+      <a class="btn signup" href="{{ url_for('signup') }}">SignUp</a>
+      <a class="btn login" href="{{ url_for('sign') }}">Login</a> 
+      <a class="btn sell" href="{{ url_for('admin') }}">Admin Login</a>
+      <a class="btn sell" href="{{ url_for('seller') }}">Sell With Us</a>
     </div>
   </div>
 </header>
-
 
 <!-- Shop Section -->
 <main class="shop-section">
   <div class="shop-container">
 
-<!-- Sidebar filters -->
-<aside class="filters">
-  <i class="fa fa-filter"></i>
-  <h3>Filters</h3>
+    <!-- Sidebar Filters -->
+    <aside class="filters">
+      <i class="fa fa-filter"></i>
+      <h3>Filters</h3>
 
-  <!-- Categories -->
-  <div class="filter-group">
-    <h4>Categories</h4>
-    <label><input type="checkbox" name="category" value="all" checked> All</label><br>
-    <label><input type="checkbox" name="category" value="electronics"> Electronics</label><br>
-    <label><input type="checkbox" name="category" value="audio"> Audio</label><br>
-    <label><input type="checkbox" name="category" value="computers"> Computers</label><br>
-    <label><input type="checkbox" name="category" value="wearables"> Wearables</label><br>
-    <label><input type="checkbox" name="category" value="photography"> Photography</label><br>
-    <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
-  </div>
+      <div class="filter-group">
+        <h4>Categories</h4>
+        <label><input type="checkbox" name="category" value="all" checked> All</label><br>
+        <label><input type="checkbox" name="category" value="electronics"> Electronics</label><br>
+        <label><input type="checkbox" name="category" value="audio"> Audio</label><br>
+        <label><input type="checkbox" name="category" value="computers"> Computers</label><br>
+        <label><input type="checkbox" name="category" value="wearables"> Wearables</label><br>
+        <label><input type="checkbox" name="category" value="photography"> Photography</label><br>
+        <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+      </div>
 
-  <!-- Price Range -->
-  <div class="filter-group">
-    <h4>Price Range</h4>
-    <label><input type="checkbox" name="price" value="under-100"> Under $100</label><br>
-    <label><input type="checkbox" name="price" value="100-300"> $100 - $300</label><br>
-    <label><input type="checkbox" name="price" value="300-500"> $300 - $500</label><br>
-    <label><input type="checkbox" name="price" value="500-1000"> $500 - $1000</label><br>
-    <label><input type="checkbox" name="price" value="over-1000"> Over $1000</label>
-  </div>
+      <div class="filter-group">
+        <h4>Price Range</h4>
+        <label><input type="checkbox" name="price" value="under-100"> Under $100</label><br>
+        <label><input type="checkbox" name="price" value="100-300"> $100 - $300</label><br>
+        <label><input type="checkbox" name="price" value="300-500"> $300 - $500</label><br>
+        <label><input type="checkbox" name="price" value="500-1000"> $500 - $1000</label><br>
+        <label><input type="checkbox" name="price" value="over-1000"> Over $1000</label>
+      </div>
 
-  <div class="clear-filters">
-    <button class="btn-clear">Clear All Filters</button>
-  </div>
-</aside>
-
+      <div class="clear-filters">
+        <button class="btn-clear">Clear All Filters</button>
+      </div>
+    </aside>
 
     <!-- Product Grid -->
     <section class="products-grid">
       <div class="products-header">
         <h2>Shop All Products</h2>
-        <p>Discover amazing products from our extensive collection</p>
+        <p>Discover amazing products from our collection</p>
       </div>
 
-      <!-- Controls -->
       <div class="products-controls">
         <input type="text" placeholder="Search products..." class="search-input" />
         <select class="sort-dropdown">
@@ -90,58 +85,42 @@
 
       <!-- Products -->
       <div class="products">
-
-        <div class="product-card">
-          <span class="badge new">New</span>
-          <span class="badge discount">-25%</span>
-          <img src="/static/Assests/headphone.jpeg" alt="Premium Wireless Headphones" />
-          <p class="category">Audio</p>
-          <h4>Premium Wireless Headphones</h4>
-          <div class="rating">⭐⭐⭐⭐☆ (24)</div>
-          <p class="price">$299 <span class="old-price">$399</span></p>
-        </div>
-
-        <div class="product-card">
-          <img src="/static/Assests/watch.jpeg" alt="Smart Fitness Watch" />
-          <p class="category">Wearables</p>
-          <h4>Smart Fitness Watch</h4>
-          <div class="rating">⭐⭐⭐⭐ (89)</div>
-          <p class="price">$199</p>
-        </div>
-
-        <div class="product-card">
-          <img src="/static/Assests/camera.jpeg" alt="DSLR Camera" />
-          <p class="category">Photography</p>
-          <h4>HD DSLR Camera</h4>
-          <div class="rating">⭐⭐⭐⭐ (89)</div>
-          <p class="price">$499</p>
-        </div>
-
-        <div class="product-card">
-          <img src="/static/Assests/laptop.jpeg" alt="Gaming Laptop" />
-          <p class="category">Computers</p>
-          <h4>High-Performance Gaming Laptop</h4>
-          <div class="rating">⭐⭐⭐⭐(89)</div>
-          <p class="price">$1199</p>
-        </div>
-
-        <div class="product-card">
-          <img src="/static/Assests/mouse.jpeg" alt="Wireless Gaming Mouse" />
-          <p class="category">Accessories</p>
-          <h4>Wireless Gaming Mouse</h4>
-          <div class="rating">⭐⭐⭐⭐(89)</div>
-          <p class="price">$59</p>
-        </div>
-
-        <div class="product-card">
-          <img src="/static/Assests/smart phone.jpeg" alt="Flagship Smartphone" />
-          <p class="category">Electronics</p>
-          <h4>Flagship Smartphone</h4>
-          <div class="rating">⭐⭐⭐⭐(89)</div>
-          <p class="price">$999</p>
-        </div>
-
+        {% if products %}
+          {% for product in products %}
+            <a href="{{ url_for('product_detail', id=product.id) }}">
+              <div class="product-card">
+                {% if product.is_new %}
+                  <span class="badge new">New</span>
+                {% endif %}
+                {% if product.discount %}
+                  <span class="badge discount">-{{ product.discount }}%</span>
+                {% endif %}
+                <img src="{{ url_for('static', filename=product.image) if product.image else url_for('static', filename='Assets/default.png') }}" alt="{{ product.name }}" />
+                <p class="category">{{ product.category }}</p>
+                <h4>{{ product.name }}</h4>
+                <div class="rating">
+                  {% if product.rating %}
+                    {% for i in range(product.rating|int) %}⭐{% endfor %}
+                    {% for i in range(5 - product.rating|int) %}☆{% endfor %}
+                  {% else %}
+                    ☆☆☆☆☆
+                  {% endif %}
+                  ({{ product.review_count or 0 }})
+                </div>
+                <p class="price">
+                  ${{ product.price }}
+                  {% if product.old_price %}
+                    <span class="old-price">${{ product.old_price }}</span>
+                  {% endif %}
+                </p>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p>No products available.</p>
+        {% endif %}
       </div>
+
     </section>
   </div>
 </main>
@@ -149,7 +128,7 @@
 <!-- Seller Invitation -->
 <section class="join">
   <h2>Ready to Start Selling?</h2>
-  <p>Join thousands of sellers already growing their business with E-Commerce Hub. Start your journey today and reach millions of customers.</p>
+  <p>Join thousands of sellers growing their business with E-Commerce Hub.</p>
   <button class="btn seller">Become A Seller</button>
   <button class="btn sell">Learn More</button>
 </section>
@@ -184,10 +163,10 @@
   <div class="footer-columns">
     <div>
       <h4>Quick Links</h4>
-      <p><a href="#">Home</a></p>
-      <p><a href="#">Shop</a></p>
+      <p><a href="{{ url_for('home') }}">Home</a></p>
+      <p><a href="{{ url_for('shop') }}">Shop</a></p>
       <p><a href="#">About Us</a></p>
-      <p><a href="#">Contact</a></p>
+      <p><a href="{{ url_for('contact') }}">Contact</a></p>
       <p><a href="#">FAQ</a></p>
     </div>
     <div>
@@ -214,4 +193,3 @@
 
 </body>
 </html>
-
