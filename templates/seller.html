@@ -4,32 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Become A Seller</title>
-  <link rel="stylesheet" href="/static/CSS/seller.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/seller.css') }}">
 </head>
 <body>
   <main class="seller-page">
-    <form action="/templates/HTML/seller.html" method="POST">
+    <form action="{{ url_for('register_seller') }}" method="POST" enctype="multipart/form-data">
       <h2>Join As A Seller</h2>
 
       <label for="storename">Store Name</label>
       <input type="text" id="storename" name="storename" required>
 
-      <label for="ownername">Name of the Owner</label>
+      <label for="ownername">Owner Name</label>
       <input type="text" id="ownername" name="ownername" required>
 
-      <label for="email">Enter Your Email</label>
+      <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
 
-      <label for="phone">Enter Phone Number</label>
-      <input type="number" id="phone" name="phone" required>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
 
-      <label for="gst">Enter Your GST Number</label>
+      <label for="gst">GST Number</label>
       <input type="text" id="gst" name="gst" required>
 
-      <label for="desc">Tell us more about Your Business</label>
+      <label for="desc">About Your Business</label>
       <textarea id="desc" name="desc" rows="4"></textarea>
 
-      <button type="submit">Register As A Seller</button>
+      <button type="submit" class="btn-submit">Register As A Seller</button>
     </form>
   </main>
 </body>

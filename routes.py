@@ -1,10 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from models import db, User, Product
+from models import db, User, Product, Seller  # Import Seller model
 import os
 from werkzeug.utils import secure_filename
-import os
-print(os.listdir(os.path.join(os.getcwd(), 'templates')))
-
 
 UPLOAD_FOLDER = 'static/Uploads'
 
@@ -75,14 +72,13 @@ class EcommerceRoutes:
             price = float(request.form['productPrice'])
             description = request.form.get('productDescription', '')
             category = request.form.get('productCategory', '')
-            
-            # Handle file upload
+
             image_file = request.files.get('productImage')
             image_path = ''
             if image_file and image_file.filename != '':
                 filename = secure_filename(image_file.filename)
                 image_file.save(os.path.join(self.app.config['UPLOAD_FOLDER'], filename))
-                image_path = f'Uploads/{filename}'  # store relative path
+                image_path = f'Uploads/{filename}'
 
             new_product = Product(
                 name=name,
@@ -109,3 +105,29 @@ class EcommerceRoutes:
         @self.app.route('/seller')
         def seller():
             return render_template('seller.html')
+
+        # Seller Registration (POST)
+        @self.app.route('/register_seller', methods=['POST'])
+        def register_seller():
+            # All variables MUST be inside the function
+            storename = request.form.get('storename')
+            ownername = request.form.get('ownername')
+            email = request.form.get('email')
+            phone = request.form.get('phone')
+            gst = request.form.get('gst')
+            desc = request.form.get('desc')
+
+            new_seller = Seller(
+                storename=storename,
+                ownername=ownername,
+                email=email,
+                phone=phone,
+                gst=gst,
+                desc=desc
+            )
+
+            db.session.add(new_seller)
+            db.session.commit()
+
+            flash("Seller registered successfully!", "success")
+            return redirect(url_for('home'))

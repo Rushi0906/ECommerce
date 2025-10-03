@@ -19,3 +19,13 @@ class Product(db.Model):
     image = db.Column(db.String(200))
     description = db.Column(db.Text)
 
+class Seller(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    storename = db.Column(db.String(100), nullable=False)
+    ownername = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    phone = db.Column(db.String(20), nullable=False)
+    gst = db.Column(db.String(30), nullable=False, unique=True)
+    desc = db.Column(db.Text)
+
+
