@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/static/CSS/signup.css">
+    <link rel="stylesheet" href="/static/CSS/signup.css">
 </head>
 <body>
     <h2>Create an Account</h2>
-    <form action="/templatess/signup.html" method="POST">
-        <label for="fullname">Full Name</label><br>
-        <input type="text" id="fullname" name="fullname" required><br><br>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('signup') }}" method="POST">
+        <label for="username">Full Name</label><br>
+        <input type="text" id="username" name="username" required><br><br>
 
         <label for="email">Enter Your Email</label><br>
         <input type="email" id="email" name="email" required><br><br>
@@ -20,9 +29,11 @@
         <input type="password" id="password" name="password" required><br><br>
 
         <label for="confirm">Confirm Password</label><br>
-        <input type="password" id="password" name="confirm" required><br><br>
+        <input type="password" id="confirm" name="confirm" required><br><br>
 
         <button type="submit">Sign Up</button>
-    </form>   
+    </form>
+
+    <p>Already have an account? <a href="{{ url_for('sign') }}">Sign In</a></p>
 </body>
 </html>

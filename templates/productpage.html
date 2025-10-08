@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ product.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/productpage.css') }}">
+</head>
+<body>
+  <div class="product-page">
+    <!-- Product Image -->
+    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+
+    <!-- Product Details -->
+    <div class="product-details">
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+      <div class="product-price">$ {{ product.price }}</div>
+
+      <div class="product-actions">
+        <button>Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+
+      <a href="{{ url_for('shop') }}" class="back-link">← Back to Shop</a>
+    </div>
+  </div>
+</body>
+</html>

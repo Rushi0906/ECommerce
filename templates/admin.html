@@ -3,193 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - E-commerce</title>
+  <title>Admin Dashboard - E-Commerce Hub</title>
   <link rel="stylesheet" href="/static/CSS/admin.css">
 </head>
 <body>
-  <h1>Admin Dashboard</h1>
 
-  <!-- Admin Login Form -->
-  <div id="loginDiv" class="login-card">
-    <h2>Admin Login</h2>
-    <form id="loginForm">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+<h1>Seller Dashboard</h1>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter password" required>
+<!-- Add Product Form -->
+<section class="add-product">
+  <h2>Add New Product</h2>
+  <form id="productForm" action="{{ url_for('add_product') }}" method="POST" enctype="multipart/form-data">
+    <label for="productName">Product Name:</label>
+    <input type="text" id="productName" name="productName" required>
 
-      <button type="submit">Login</button>
-    </form>
-    <p id="loginError" class="error">Invalid username or password!</p>
-  </div>
+    <label for="productPrice">Price:</label>
+    <input type="number" id="productPrice" name="productPrice" step="0.01" required>
 
-  <!-- Admin Section -->
-  <div id="adminSection" style="display:none;">
+    <label for="productDescription">Description:</label>
+    <textarea id="productDescription" name="productDescription"></textarea>
 
-    <!-- Summary Cards -->
-    <div class="dashboard-cards">
-      <div class="card">
-        <h3>Total Products</h3>
-        <p id="totalProducts">0</p>
-      </div>
-      <div class="card">
-        <h3>Inventory Value</h3>
-        <p id="inventoryValue">$0</p>
-      </div>
-      <div class="card">
-        <h3>Total Categories</h3>
-        <p id="totalCategories">0</p>
-      </div>
-    </div>
+    <label for="productCategory">Category:</label>
+    <input type="text" id="productCategory" name="productCategory">
 
-    <!-- Add Product -->
-    <section class="add-product">
-      <h2>Add New Product</h2>
-      <form id="productForm">
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+    <label for="productImage">Product Image:</label>
+    <input type="file" id="productImage" name="productImage">
 
-        <label for="productPrice">Price:</label>
-        <input type="number" id="productPrice" name="productPrice" placeholder="Enter price" required>
+    <button type="submit">Add Product</button>
+  </form>
+</section>
 
-        <label for="productDescription">Description:</label>
-        <textarea id="productDescription" name="productDescription" placeholder="Enter description"></textarea>
-
-        <label for="productCategory">Category:</label>
-        <input type="text" id="productCategory" name="productCategory" placeholder="Enter category">
-
-        <button type="submit">Add Product</button>
-      </form>
-    </section>
-
-    <!-- Inventory Table -->
-    <section class="inventory">
-      <h2>Product Inventory</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price ($)</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="productTable">
-          <!-- Dynamically added rows -->
-        </tbody>
-      </table>
-    </section>
-  </div>
-
-  <script>
-    const loginForm = document.getElementById('loginForm');
-    const loginDiv = document.getElementById('loginDiv');
-    const adminSection = document.getElementById('adminSection');
-    const loginError = document.getElementById('loginError');
-
-    // Admin credentials
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "pass123";
-
-    // Product management
-    let productId = 1;
-    const productForm = document.getElementById('productForm');
-    const productTable = document.getElementById('productTable');
-
-    // Dashboard stats
-    const totalProductsEl = document.getElementById("totalProducts");
-    const inventoryValueEl = document.getElementById("inventoryValue");
-    const totalCategoriesEl = document.getElementById("totalCategories");
-
-    let totalProducts = 0;
-    let inventoryValue = 0;
-    let categories = new Set();
-
-    // Login
-    loginForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      if(username === ADMIN_USERNAME && password === ADMIN_PASSWORD){
-        loginDiv.style.display = "none";
-        adminSection.style.display = "block";
-      } else {
-        loginError.style.display = "block";
-      }
-    });
-
-    // Add Product
-    productForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('productName').value;
-      const price = parseFloat(document.getElementById('productPrice').value);
-      const desc = document.getElementById('productDescription').value;
-      const category = document.getElementById('productCategory').value;
-
-      // Add row
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${productId}</td>
-        <td>${name}</td>
-        <td>${price.toFixed(2)}</td>
-        <td>${desc}</td>
-        <td>${category}</td>
+<!-- Product Inventory -->
+<section class="inventory">
+  <h2>Product Inventory</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price ($)</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
         <td>
-          <button onclick="editProduct(this)">Edit</button>
-          <button onclick="deleteProduct(this)" class="delete">Delete</button>
+          {% if product.image %}
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" width="60">
+          {% endif %}
         </td>
-      `;
-      productTable.appendChild(row);
+        <td>
+          <form action="{{ url_for('delete_product', id=product.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="delete">Delete</button>
+          </form>
+          <!-- You can also add an Edit button linking to edit page -->
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
 
-      // Update stats
-      totalProducts++;
-      inventoryValue += price;
-      if(category) categories.add(category);
-
-      updateStats();
-
-      productId++;
-      productForm.reset();
-    });
-
-    // Update dashboard stats
-    function updateStats(){
-      totalProductsEl.textContent = totalProducts;
-      inventoryValueEl.textContent = `$${inventoryValue.toFixed(2)}`;
-      totalCategoriesEl.textContent = categories.size;
-    }
-
-    // Edit product
-    function editProduct(button) {
-      const row = button.closest("tr");
-      document.getElementById('productName').value = row.cells[1].innerText;
-      document.getElementById('productPrice').value = row.cells[2].innerText;
-      document.getElementById('productDescription').value = row.cells[3].innerText;
-      document.getElementById('productCategory').value = row.cells[4].innerText;
-      row.remove();
-    }
-
-    // Delete product
-    function deleteProduct(button) {
-      const row = button.closest("tr");
-      const price = parseFloat(row.cells[2].innerText);
-      const category = row.cells[4].innerText;
-
-      totalProducts--;
-      inventoryValue -= price;
-
-      // Check if category still exists
-      let stillExists = [...productTable.rows].some(r => r.cells[4].innerText === category);
-      if(!stillExists) categories.delete(category);
-
-      updateStats();
-      row.remove();
-    }
-  </script>
 </body>
 </html>
