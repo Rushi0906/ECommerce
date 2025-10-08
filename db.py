@@ -80,6 +80,10 @@ class Product(db.Model):
     image = db.Column(db.String(200))     # Path to product image
     description = db.Column(db.Text)      # Product description
 
+    seller_id = db.Column(db.Integer, db.ForeignKey('seller.id'), nullable=False)
+    is_approved = db.Column(db.Boolean, default=False)  # <--- Added approval status
+    seller = db.relationship('Seller', backref=db.backref('products', lazy=True))
+
 @app.route('/add_product', methods=['GET','POST'])
 def add_product():
         if(request.method == 'POST'):
@@ -101,14 +105,27 @@ def add_product():
             category=category,
             price=price,
             description=description,
-            image=image_path
+            image=image_path,
+            is_approved=False 
             )
+
+            
             db.session.add(new_product)
             db.session.commit()
             print('Product added successfully!', 'success')
         return render_template('admin.html')
-
-
+# ======================================================
+@app.route('/admin/products/pending')
+def pending_products():
+    pending = Product.query.filter_by(is_approved=False).all()
+    return render_template('pending_products.html', products=pending)
+# ===============================================================
+@app.route('/admin/product/approve/<int:product_id>', methods=['POST'])
+def approve_product(product_id):
+    product = Product.query.get_or_404(product_id)
+    product.is_approved = True
+    db.session.commit()
+    return redirect(url_for('pending_products'))
 
 # ===============================================
 @app.route("/success")
@@ -123,7 +140,8 @@ def home():
 # ==============================================
 @app.route('/shop')
 def shop():
-    return render_template('shop.html')
+    products = Product.query.filter_by(is_approved=True).all()
+    return render_template('shop.html', products=products)
 # =============================================
 @app.route('/product/<int:id>')
 def product_detail(id):

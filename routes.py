@@ -101,6 +101,7 @@ class EcommerceRoutes:
                     return redirect(url_for('sign'))
 
             return render_template('sign.html')
+        
 
         # -------------------------
         # Logout
