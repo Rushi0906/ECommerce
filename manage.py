@@ -1,4 +1,4 @@
-from flask_migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate
 from flask.cli import FlaskGroup
 from db import app, db
 
