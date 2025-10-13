@@ -3,11 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Product, Seller
 import os
 from werkzeug.utils import secure_filename
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
+app.secret_key = "mysecretkey123" 
 app.config['SQLALCHEMY_DATABASE_URI']= 'mysql+pymysql://root:1111@localhost/ecommerce'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 # ============================================================================================
 class Seller(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -70,6 +73,7 @@ def sign():
     return render_template('sign.html')
 # =================================================
 class Product(db.Model):
+    __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(50), nullable=False)
@@ -81,7 +85,9 @@ class Product(db.Model):
     description = db.Column(db.Text)      # Product description
 
     seller_id = db.Column(db.Integer, db.ForeignKey('seller.id'), nullable=False)
+
     is_approved = db.Column(db.Boolean, default=False)  # <--- Added approval status
+
     seller = db.relationship('Seller', backref=db.backref('products', lazy=True))
 
 @app.route('/add_product', methods=['GET','POST'])
@@ -140,8 +146,8 @@ def home():
 # ==============================================
 @app.route('/shop')
 def shop():
-    products = Product.query.filter_by(is_approved=True).all()
-    return render_template('shop.html', products=products)
+    # products = Product.query.filter_by(is_approved=True).all()
+    return render_template('shop.html')
 # =============================================
 @app.route('/product/<int:id>')
 def product_detail(id):
