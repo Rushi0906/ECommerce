@@ -85,6 +85,7 @@ class Product(db.Model):
     description = db.Column(db.Text)      # Product description
 
     seller_id = db.Column(db.Integer, db.ForeignKey('seller.id'), nullable=False)
+    
 
     is_approved = db.Column(db.Boolean, default=False)  # <--- Added approval status
 
@@ -106,14 +107,19 @@ def add_product():
                 image_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 image_path = f'Uploads/{filename}'
 
+                seller_id = session.get('seller_id')
+
             new_product = Product(
             name=name,
             category=category,
             price=price,
             description=description,
+            seller_id=seller_id,
             image=image_path,
             is_approved=False 
             )
+
+            
 
             
             db.session.add(new_product)
